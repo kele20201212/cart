@@ -1,0 +1,206 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.order-wrap{
+    width: 100%;
+    height:60px;
+    margin-top: 100px;
+}
+.progress{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    /*background-color: #007fff;*/
+}
+.progress li{
+    position: relative;
+    float:left ;
+    width: 295px;
+    height: 0px;
+    border-top: 2px solid #ccc;
+}
+.progress .current{
+    border-top: 2px solid orange;
+    margin-left: 10px;
+}
+.progress li p{
+    position: absolute;
+    width: 80px;
+    top:-40px;
+    text-align: center;
+    left:107px;
+    color: #ccc;
+}
+.progress li .create{
+    color: #000;
+}
+.progress li div{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top:-10px;
+    left: 137px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+.progress li .first{
+    background-color: orange;
+}
+.address{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+    /*background: red;*/
+}
+.address:before,.address:after{
+    content: '';
+    display: inline-block;
+    width: 540px;
+    height: 0;
+    border-top: 2px solid #ccc;
+    vertical-align: middle;
+}
+.address:before{
+    margin-right: 10px;
+}
+.address:after{
+    margin-left: 10px;
+}
+.address-items{
+    width: 1200px;
+    /*height: 600px;*/
+    margin: 30px auto;
+    overflow: hidden;
+    /*background: red;*/
+}
+.address-items li{
+    position: relative;
+    float: left;
+    width:282px;
+    height:165px;
+    margin-left: 12px;
+    margin-top: 12px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    /*background-color: #007fff;*/
+}
+.address-items li:hover{
+    border: 2px solid orange;
+}
+.address-items .check{
+    border: 2px solid orange;
+}
+.info{
+    margin:20px;
+    color: dimgray;
+}
+.info div{
+    font-size: 12px;
+    margin-top:10px;
+}
+.info .tel{
+    margin-top: 30px;
+}
+.edit,.delete{
+    position: absolute;
+    top: 20px;
+    left: 240px;
+}
+.edit img,.delete img{
+    display: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+div.delete{
+    top:115px;
+}
+.edit .img-show,.delete .img-show{
+    display:block;
+}
+.default{
+    color: orange;
+}
+.dehidden{
+    display: none;
+}
+.default.deshow{
+    display: block;
+}
+
+.more{
+    width: 60px;
+    margin: 0 auto;
+    margin-bottom:30px;
+    font-size: 14px;
+    color: orange;
+    cursor: pointer;
+    position: relative;
+    /*background: green;*/
+}
+/*!*箭头*!*/
+.arrow{
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width:85px;
+    text-align: center;
+    z-index: 2;
+}
+.arrow:hover{
+    transform: rotate(180deg);
+    transition: all .2s linear;
+}
+.add{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+.add-sign{
+    width: 150px;
+    height: 150px;
+    /*background: pink;*/
+}
+.add-address{
+    color: gray;
+    font-size: 12px;
+    margin-top: -40px;
+}
+.delivery{
+    width: 1200px;
+    margin:40px auto;
+    text-align: center;
+}
+.delivery div{
+    display: inline-block;
+    width:260px;
+    height: 60px;
+    border: 2px solid #ccc;
+    font-size: 14px;
+    color: #ccc;
+    cursor: pointer;
+}
+.delivery div p{
+    margin-top: 10px;
+}
+.delivery .selected,.delivery div:hover{
+    border:2px solid orange;
+    color: #000;
+}
+.divide-line{
+    width: 1200px;
+    margin: 0 auto;
+    border-top: 2px solid #ccc;
+}

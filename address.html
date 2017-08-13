@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配送地址</title>
+    <link rel="stylesheet" href="css/address.css">
+</head>
+<body>
+<!--订单进度查询-->
+    <div id="container">
+        <div class="order-wrap">
+            <ul class="progress">
+                <li class="current">
+                    <p class="create">地址确认</p>
+                    <div class="first"></div>
+                </li>
+                <li>
+                    <p>查看订单</p>
+                    <div class="second"></div>
+                </li>
+                <li>
+                    <p>支付</p>
+                    <div class="third"></div>
+                </li>
+                <li>
+                    <p>订单确认</p>
+                    <div class="four"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="address">配送地址</div>
+        <ul class="address-items">
+            <li v-for="(item,index) in filterAddressList" v-bind:class="{'check':index==currentIndex}"
+                @click="currentIndex=index">
+                <div class="info">
+                    <h4>{{item.userName}}</h4>
+                    <div class="street">{{item.streetName}}</div>
+                    <div class="tel">{{item.tel}}</div>
+                    <div class="default" v-if="item.isDefault">默认地址</div>
+                    <div class="default dehidden" v-if="!item.isDefault"
+                         v-bind:class="{'deshow':index==currentIndex}" @click="setDefault(item.addressId)">
+                        设为默认</div>
+                </div>
+                <div class="edit">
+                    <img src="img/pen.png" v-bind:class="{'img-show':index==currentIndex}">
+                </div>
+                <div class="delete">
+                    <img src="img/timg.jpeg" v-bind:class="{'img-show':index==currentIndex}">
+                </div>
+            </li>
+
+            <li class="add">
+                <a href="#">
+                    <img class="add-sign" src="img/plus.jpg">
+                    <div class="add-address">添加地址</div>
+                </a>
+            </li>
+        </ul>
+        <div class="more" @click="loadMore()">
+            more
+            <span class="arrow">&or;</span>
+        </div>
+        <div class="address">配送方式</div>
+        <div class="delivery">
+            <div class="standard" v-bind:class="{'selected':shippingMethod ==1}" @click="shippingMethod=1">
+                <p>标准配送</p>
+                <span>免费</span>
+            </div>
+            &nbsp;&nbsp;
+            <div class="senior" v-bind:class="{'selected':shippingMethod==2}" @click="shippingMethod=2">
+                <p>高级配送</p>
+                <span>￥40 元</span>
+            </div>
+        </div>
+        <div class="divide-line"></div>
+    </div>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/address.js"></script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>购物车功能实现</title>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <div class="cart-wrap" id="app">
+        <div class="cart">购物车</div>
+        <div class="nav">
+            <span class="goods-info">商品信息</span>
+            <span class="goods-money same">商品金额</span>
+            <span class="goods-num same">商品数量</span>
+            <span class="total-money same">总金额</span>
+            <span class="edit same">编辑</span>
+        </div>
+        <div class="goods-detail" v-for="item in productlist">
+            <div class="goods">
+                <input type="checkbox" id="input" class="selectBtn" v-bind:checked="item.checked"
+                       @click="selectedProduct(item)">
+                <img v-bind:src="item.productImage">
+                <span class="product-name">{{item.productName}}</span>
+                <div class="free">
+                <span>赠送：</span>
+                <span v-for="part in item.parts" v-text="part.partsName"></span>
+            </div>
+            </div>
+            <div class="money">{{item.productPrice | formatMoney}}</div>
+            <div class="num common">
+                <a href="javascript:" class="subtract" v-on:click="changeMoney(item,-1)">-</a>
+                <input type="text" class="num-frame" v-model="item.productQuentity" v-on:click="testVModel()">
+                <a href="javascript:" class="plus" @click="changeMoney(item,1,this)">+</a>
+            </div>
+            <div class="total common">{{item.productPrice*item.productQuentity | money("元") }}</div>
+            <div class="edit-ope common">
+                <img src="img/timg.jpeg" @click="delConfirm(item)">
+            </div>
+            <hr>
+        </div>
+
+        <ul class="accounts">
+            <li>
+                <input type="checkbox" id="check-all" class="check-all-product" v-bind:checked="checkAllFlag"
+                       v-on:change="checkAll()" >
+                <label for="check-all" class="allchoose">全选</label>
+                <span class="delay" v-on:click="removeAll()">取消全部</span>
+            </li>
+            <li>
+                总计: <span class="total-price">{{totalMoney | money("元")}}</span>
+                <a href="address.html" class="clear">结账</a>
+            </li>
+        </ul>
+        <div class="md-model" v-bind:class="{'md-model-show':delFlag}">
+            <div class="md-top">
+                <button class="md-close" @click="delFlag=false">X</button>
+            </div>
+            <div class="md-content">
+                <p>您确定要删除此订单信息吗？</p>
+                <div class="btn-wrap">
+                    <button class="btn" @click="delProduct()">确定</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn" @click="delFlag=false">取消</button>
+                </div>
+            </div>
+        </div>
+        <div class="md-overlay" v-if="delFlag"></div>
+    </div>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/cart.js"></script>
+</html>
